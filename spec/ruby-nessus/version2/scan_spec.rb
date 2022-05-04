@@ -90,6 +90,10 @@ describe 'Nessus Version 2: Scan' do
     expect(@xml.target_hosts).to be_eql(['scanme.insecure.org', 'snorby.org'])
   end
 
+  it 'should plugin_ids size equal 32287' do
+    expect(@xml.plugin_ids.size).to be_eql(32287)
+  end
+
   it 'should find_by_hotsname' do
     @xml.find_by_hostname('scanme.insecure.org') { |host| expect(host.hostname).to eq 'scanme.insecure.org' }
   end
