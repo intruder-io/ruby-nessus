@@ -83,6 +83,16 @@ module RubyNessus
       end
 
       #
+      # Return the plugins that were included in the scan.
+      #
+      # @return [Array<String>]
+      #   Array of plugin IDs
+      #
+      def plugin_ids
+        @xml.xpath("//Preferences/ServerPreferences/preference[name='plugin_set']/value").first.inner_text.split(';')
+      end
+
+      #
       # Creates a new Host object to be parser
       #
       # @yield [prog] If a block is given, it will be passed the newly
